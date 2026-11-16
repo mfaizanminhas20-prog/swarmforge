@@ -32,3 +32,16 @@ class Agent:
     @classmethod
     def from_dict(cls, d: dict) -> "Agent":
         return cls(id=d["id"], name=d["name"], skills=list(d["skills"]), speed=float(d.get("speed", 1.0)), cost_per_unit=float(d.get("cost_per_unit", 1.0)), available=bool(d.get("available", True)), current_task=d.get("current_task"))
+
+@dataclass
+class ScheduledTask:
+    task_id: str
+    agent_id: str
+    start_time: float
+    end_time: float
+
+@dataclass
+class Schedule:
+    assignments: List[ScheduledTask] = field(default_factory=list)
+    makespan: float = 0.0
+    total_cost: float = 0.0
