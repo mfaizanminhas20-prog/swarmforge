@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Event",
+  "type": "object",
+  "required": ["type", "t"],
+  "properties": {
+    "type": {"type": "string"},
+    "t": {"type": "number"},
+    "task_id": {"type": "string"},
+    "agent_id": {"type": "string"}
+  }
+}

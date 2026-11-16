@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Task",
+  "type": "object",
+  "required": ["id", "name", "required_skill", "est_time", "est_cost", "priority", "deps", "status"],
+  "properties": {
+    "id": {"type": "string"},
+    "name": {"type": "string"},
+    "required_skill": {"type": "string"},
+    "est_time": {"type": "number"},
+    "est_cost": {"type": "number"},
+    "priority": {"type": "string", "enum": ["low", "medium", "high"]},
+    "deps": {"type": "array", "items": {"type": "string"}},
+    "status": {"type": "string", "enum": ["blocked", "ready", "running", "done", "failed"]}
+  }
+}

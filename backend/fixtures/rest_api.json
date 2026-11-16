@@ -1,0 +1,18 @@
+{
+  "mission": "Build and validate a secure REST API",
+  "agents": [
+    {"id": "a1", "name": "Backend Agent", "skills": ["backend", "database"], "speed": 1.0, "cost_per_unit": 2.0, "available": true, "current_task": null},
+    {"id": "a2", "name": "Security Agent", "skills": ["security", "backend"], "speed": 0.9, "cost_per_unit": 3.0, "available": true, "current_task": null},
+    {"id": "a3", "name": "QA Agent", "skills": ["testing", "security"], "speed": 1.2, "cost_per_unit": 1.5, "available": true, "current_task": null}
+  ],
+  "tasks": [
+    {"id": "t1", "name": "Analyze requirements", "required_skill": "backend", "est_time": 4, "est_cost": 8, "priority": "high", "deps": [], "status": "blocked"},
+    {"id": "t2", "name": "Design architecture", "required_skill": "backend", "est_time": 6, "est_cost": 12, "priority": "high", "deps": ["t1"], "status": "blocked"},
+    {"id": "t3", "name": "Design database schema", "required_skill": "database", "est_time": 5, "est_cost": 10, "priority": "medium", "deps": ["t1"], "status": "blocked"},
+    {"id": "t4", "name": "Research security", "required_skill": "security", "est_time": 3, "est_cost": 9, "priority": "medium", "deps": ["t1"], "status": "blocked"},
+    {"id": "t5", "name": "Implement backend", "required_skill": "backend", "est_time": 10, "est_cost": 20, "priority": "high", "deps": ["t2", "t3"], "status": "blocked"},
+    {"id": "t6", "name": "Run security checks", "required_skill": "security", "est_time": 4, "est_cost": 12, "priority": "high", "deps": ["t4", "t5"], "status": "blocked"},
+    {"id": "t7", "name": "Write and run tests", "required_skill": "testing", "est_time": 6, "est_cost": 9, "priority": "high", "deps": ["t5"], "status": "blocked"},
+    {"id": "t8", "name": "Final review", "required_skill": "backend", "est_time": 3, "est_cost": 6, "priority": "low", "deps": ["t6", "t7"], "status": "blocked"}
+  ]
+}

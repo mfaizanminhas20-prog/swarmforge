@@ -1,0 +1,34 @@
+from dataclasses import dataclass, field
+from typing import List, Optional
+
+@dataclass
+class Task:
+    id: str
+    name: str
+    required_skill: str
+    est_time: float
+    est_cost: float
+    priority: str = "medium"
+    deps: List[str] = field(default_factory=list)
+    status: str = "blocked"
+
+    @classmethod
+    def from_dict(cls, d: dict) -> "Task":
+        return cls(id=d["id"], name=d["name"], required_skill=d["required_skill"], est_time=float(d["est_time"]), est_cost=float(d["est_cost"]), priority=d.get("priority", "medium"), deps=list(d.get("deps", [])), status=d.get("status", "blocked"))
+
+@dataclass
+class Agent:
+    id: str
+    name: str
+    skills: List[str]
+    speed: float = 1.0
+    cost_per_unit: float = 1.0
+    available: bool = True
+    current_task: Optional[str] = None
+
+    def can_do(self, task: Task) -> bool:
+        return task.required_skill in self.skills
+
+    @classmethod
+    def from_dict(cls, d: dict) -> "Agent":
+        return cls(id=d["id"], name=d["name"], skills=list(d["skills"]), speed=float(d.get("speed", 1.0)), cost_per_unit=float(d.get("cost_per_unit", 1.0)), available=bool(d.get("available", True)), current_task=d.get("current_task"))
