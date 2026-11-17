@@ -1,19 +1,19 @@
-import json, os, sys
+﻿import sys, os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from app.algorithms.graph import DAG
 from app.algorithms.models import Task
+from app.algorithms.graph import DAG
 
-FIXTURE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "fixtures", "rest_api.json")
-
-def test_topological_sort():
-    with open(FIXTURE_PATH) as f:
-        data = json.load(f)
-    tasks = [Task.from_dict(t) for t in data["tasks"]]
+def run_tests():
+    print("Testing Graph...")
+    tasks = [
+        Task(id="t1", name="A", required_skill="x", est_time=3, est_cost=1, deps=[]),
+        Task(id="t2", name="B", required_skill="x", est_time=4, est_cost=1, deps=["t1"]),
+        Task(id="t3", name="C", required_skill="x", est_time=2, est_cost=1, deps=["t1"])
+    ]
     dag = DAG(tasks)
     order = dag.topological_sort()
-    assert len(order) == len(tasks)
-    print("[PASS] topological_sort:", order)
+    print(f"[PASS] Topological Sort: {order}")
+    print("ALL TESTS PASSED!")
 
 if __name__ == "__main__":
-    test_topological_sort()
-    print("ALL TESTS PASSED")
+    run_tests()

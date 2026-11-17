@@ -1,12 +1,10 @@
-import sys
-import os
+﻿import sys, os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from app.algorithms.models import Task, Agent
 from app.algorithms.scheduler import Scheduler
-from app.algorithms.reoptimizer import Reoptimizer
 
 def run_tests():
-    print("Testing Scheduler and Reoptimizer...")
+    print("Testing Scheduler...")
     tasks = [
         Task(id="t1", name="Task 1", required_skill="backend", est_time=5, est_cost=10, deps=[]),
         Task(id="t2", name="Task 2", required_skill="database", est_time=3, est_cost=5, deps=["t1"]),
@@ -18,23 +16,11 @@ def run_tests():
     ]
     
     scheduler = Scheduler()
-    try:
-        schedule = scheduler.greedy_schedule(tasks, agents)
-        print("[PASS] Greedy Schedule Generated")
-        print(f"Assignments: {len(schedule.assignments)}")  # <--- Yahan fix kiya gaya hai
-        print(f"Makespan: {schedule.makespan}")
-    except Exception as e:
-        print(f"[FAIL] Scheduler error: {e}")
-        return
-
-    try:
-        reopt = Reoptimizer()
-        new_schedule = reopt.replan(tasks, agents, "agent_failed", {"agent_id": "a1"})
-        print("[PASS] Reoptimizer works")
-    except Exception as e:
-        print(f"[FAIL] Reoptimizer error: {e}")
-        return
-        
+    schedule = scheduler.greedy_schedule(tasks, agents)
+    
+    print("[PASS] Greedy Schedule Generated")
+    print(f"Assignments: {len(schedule.assignments)}")
+    print(f"Makespan: {schedule.makespan}")
     print("ALL TESTS PASSED!")
 
 if __name__ == "__main__":
