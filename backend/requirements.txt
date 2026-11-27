@@ -1,2 +1,9 @@
 fastapi>=0.110.0
 uvicorn[standard]>=0.29.0
+python-dotenv
+google-genai
+pytest
+pytest-asyncio
+httpx
+websockets
+jsonschema

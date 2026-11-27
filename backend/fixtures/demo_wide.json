@@ -1,0 +1,172 @@
+{
+  "mission": "Build and launch a SaaS MVP",
+  "agents": [
+    {
+      "id": "a1",
+      "name": "Strategic Architect",
+      "skills": ["planning", "research", "backend", "writing"],
+      "speed": 1.1,
+      "cost_per_unit": 3.2,
+      "available": true,
+      "current_task": null
+    },
+    {
+      "id": "a2",
+      "name": "Fullstack Engineer",
+      "skills": ["backend", "database", "testing", "design"],
+      "speed": 1.2,
+      "cost_per_unit": 2.8,
+      "available": true,
+      "current_task": null
+    },
+    {
+      "id": "a3",
+      "name": "Security Specialist",
+      "skills": ["security", "backend", "database", "testing"],
+      "speed": 0.8,
+      "cost_per_unit": 4.0,
+      "available": true,
+      "current_task": null
+    },
+    {
+      "id": "a4",
+      "name": "Product Designer",
+      "skills": ["design", "research", "planning", "writing"],
+      "speed": 1.0,
+      "cost_per_unit": 2.2,
+      "available": true,
+      "current_task": null
+    },
+    {
+      "id": "a5",
+      "name": "Quality & Reliability Auditor",
+      "skills": ["testing", "security", "writing", "database"],
+      "speed": 1.3,
+      "cost_per_unit": 1.6,
+      "available": true,
+      "current_task": null
+    }
+  ],
+  "tasks": [
+    {
+      "id": "t1",
+      "name": "Analyze MVP requirements & planning",
+      "required_skill": "planning",
+      "est_time": 4.0,
+      "est_cost": 10.0,
+      "priority": "high",
+      "deps": [],
+      "status": "blocked"
+    },
+    {
+      "id": "t2",
+      "name": "Competitor benchmark & user research",
+      "required_skill": "research",
+      "est_time": 5.0,
+      "est_cost": 12.0,
+      "priority": "medium",
+      "deps": ["t1"],
+      "status": "blocked"
+    },
+    {
+      "id": "t3",
+      "name": "Design design system & UI wireframes",
+      "required_skill": "design",
+      "est_time": 6.0,
+      "est_cost": 15.0,
+      "priority": "high",
+      "deps": ["t1"],
+      "status": "blocked"
+    },
+    {
+      "id": "t4",
+      "name": "Develop REST API backend services",
+      "required_skill": "backend",
+      "est_time": 8.0,
+      "est_cost": 22.0,
+      "priority": "high",
+      "deps": ["t1"],
+      "status": "blocked"
+    },
+    {
+      "id": "t5",
+      "name": "Setup database schema & migrations",
+      "required_skill": "database",
+      "est_time": 5.0,
+      "est_cost": 14.0,
+      "priority": "high",
+      "deps": ["t1"],
+      "status": "blocked"
+    },
+    {
+      "id": "t6",
+      "name": "Implement security auth & RBAC",
+      "required_skill": "security",
+      "est_time": 6.0,
+      "est_cost": 18.0,
+      "priority": "high",
+      "deps": ["t1"],
+      "status": "blocked"
+    },
+    {
+      "id": "t7",
+      "name": "Construct automated testing suite",
+      "required_skill": "testing",
+      "est_time": 5.0,
+      "est_cost": 11.0,
+      "priority": "medium",
+      "deps": ["t1"],
+      "status": "blocked"
+    },
+    {
+      "id": "t8",
+      "name": "Author API documentation & user guides",
+      "required_skill": "writing",
+      "est_time": 4.0,
+      "est_cost": 9.0,
+      "priority": "low",
+      "deps": ["t1"],
+      "status": "blocked"
+    },
+    {
+      "id": "t9",
+      "name": "Define rollout roadmap & SLA planning",
+      "required_skill": "planning",
+      "est_time": 3.0,
+      "est_cost": 8.0,
+      "priority": "low",
+      "deps": ["t1"],
+      "status": "blocked"
+    },
+    {
+      "id": "t10",
+      "name": "Module integration & system assembly",
+      "required_skill": "backend",
+      "est_time": 7.0,
+      "est_cost": 20.0,
+      "priority": "high",
+      "deps": ["t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9"],
+      "status": "blocked"
+    },
+    {
+      "id": "t11",
+      "name": "End-to-end testing & staging verification",
+      "required_skill": "testing",
+      "est_time": 4.0,
+      "est_cost": 10.0,
+      "priority": "high",
+      "deps": ["t10"],
+      "status": "blocked"
+    },
+    {
+      "id": "t12",
+      "name": "Production deployment & launch release",
+      "required_skill": "backend",
+      "est_time": 3.0,
+      "est_cost": 9.0,
+      "priority": "high",
+      "deps": ["t11"],
+      "status": "blocked"
+    }
+  ]
+}

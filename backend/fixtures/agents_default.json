@@ -1,0 +1,47 @@
+[
+  {
+    "id": "a1",
+    "name": "Strategic Architect",
+    "skills": ["planning", "research", "backend", "writing"],
+    "speed": 1.1,
+    "cost_per_unit": 3.2,
+    "available": true,
+    "current_task": null
+  },
+  {
+    "id": "a2",
+    "name": "Fullstack Engineer",
+    "skills": ["backend", "database", "testing", "design"],
+    "speed": 1.2,
+    "cost_per_unit": 2.8,
+    "available": true,
+    "current_task": null
+  },
+  {
+    "id": "a3",
+    "name": "Security Specialist",
+    "skills": ["security", "backend", "database", "testing"],
+    "speed": 0.8,
+    "cost_per_unit": 4.0,
+    "available": true,
+    "current_task": null
+  },
+  {
+    "id": "a4",
+    "name": "Product Designer",
+    "skills": ["design", "research", "planning", "writing"],
+    "speed": 1.0,
+    "cost_per_unit": 2.2,
+    "available": true,
+    "current_task": null
+  },
+  {
+    "id": "a5",
+    "name": "Quality & Reliability Auditor",
+    "skills": ["testing", "security", "writing", "database"],
+    "speed": 1.3,
+    "cost_per_unit": 1.6,
+    "available": true,
+    "current_task": null
+  }
+]
