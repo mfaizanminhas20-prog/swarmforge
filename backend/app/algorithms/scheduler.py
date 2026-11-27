@@ -60,6 +60,7 @@ class GreedyScheduler:
         scheduled_tasks: List[ScheduledTask] = []
         total_cost: float = 0.0
         current_time: float = 0.0
+        end_of: dict[str, float] = {}
 
         while remaining:
             # ------------------------------------------------------------------
@@ -143,8 +144,9 @@ class GreedyScheduler:
                     continue
 
                 # Compute timing
+                dep_ready = max((end_of[d] for d in (task.deps or []) if d in end_of), default=0.0)
                 start_time: float = max(
-                    agent_free[best_agent.id], current_time
+                    agent_free[best_agent.id], current_time, dep_ready
                 )
                 duration: float = task.est_time / best_agent.speed
                 end_time: float = start_time + duration
@@ -166,6 +168,7 @@ class GreedyScheduler:
                 assigned_this_round.add(task.id)
                 remaining.discard(task.id)
                 finished.add(task.id)
+                end_of[task.id] = end_time
 
             # If nothing could be assigned this round, advance the clock
             if not assigned_this_round:

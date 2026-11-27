@@ -38,3 +38,19 @@ class CPM:
     def makespan(self) -> float:
         self.compute_critical_path()
         return max(self._ef.values(), default=0.0)
+
+    def get_details(self) -> dict[str, dict]:
+        if not self._computed:
+            self.compute_critical_path()
+        critical_set = set(self._critical_path)
+        return {
+            tid: {
+                "es": float(self._es[tid]),
+                "ef": float(self._ef[tid]),
+                "ls": float(self._ls[tid]),
+                "lf": float(self._lf[tid]),
+                "float": float(self._float[tid]),
+                "critical": tid in critical_set,
+            }
+            for tid in self._tasks
+        }
